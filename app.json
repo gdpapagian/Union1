@@ -1,0 +1,39 @@
+{
+  "id": "906e5733-2077-4f36-ac32-d27038c3b3db",
+  "name": "UnionMerge1",
+  "publisher": "Default Publisher",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "59d6c131-c85a-4964-ad7a-0c43f518e25d",
+      "publisher": "Fortune Technologies SA",
+      "name": "MaritimeBase",
+      "version": "1.0.0.19"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "25.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50099
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "14.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
