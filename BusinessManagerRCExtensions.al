@@ -51,6 +51,12 @@ pageextension 50001 "Data Upgrade Center _GP" extends "Business Manager Role Cen
                     RunObject = page "Default Dimensions GP";
                     ApplicationArea = All;
                 }
+
+                action("Fix Company Pictures")
+                {
+                    RunObject = report "Fix Company Pictures";
+                    ApplicationArea = All;
+                }
             }
         }
     }
