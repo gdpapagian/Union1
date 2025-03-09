@@ -35,7 +35,7 @@ codeunit 50000 DimUtilCU_GP
                 if bFoundEligibleBU then
                     shippingCompany := companyMapping."ShippingCompany Code"
                 else
-                    shippingCompany := 'UMLUG01';
+                    shippingCompany := '4000';
             end;
         end
         else begin
@@ -101,7 +101,7 @@ codeunit 50000 DimUtilCU_GP
                 if bFoundEligibleBU then
                     shippingCompany := companyMapping."ShippingCompany Code"
                 else
-                    shippingCompany := 'UMLUG01';
+                    shippingCompany := '4000';
             end;
         end
         else begin
