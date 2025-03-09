@@ -23,13 +23,20 @@ codeunit 50000 DimUtilCU_GP
 
         shippingCompany: Code[20];
     begin
-        if dimSetBUSUNIT.Get(dimensionSetID, 'BUSUNIT') then
-            bFoundEligibleBU := companyMapping.Get(companyMapping."Line Type"::BUSUNIT, dimSetBUSUNIT."Dimension Value Code");
-        if bFoundEligibleBU then
-            shippingCompany := companyMapping."ShippingCompany Code"
-        else if dimSetENTITY.Get(dimensionSetID, 'ENTITY') then begin
-            companyMapping.Get(companyMapping."Line Type"::ENTITY, dimSetENTITY."Dimension Value Code");
-            shippingCompany := companyMapping."ShippingCompany Code";
+        if dimSetENTITY.Get(dimensionSetID, 'ENTITY') then begin
+            if dimSetENTITY."Dimension Value Code" <> 'UMLUG01' then begin
+                companyMapping.Get(companyMapping."Line Type"::ENTITY, dimSetENTITY."Dimension Value Code");
+                shippingCompany := companyMapping."ShippingCompany Code";
+            end
+            else begin
+                //UNION GLORY case
+                if dimSetBUSUNIT.Get(dimensionSetID, 'BUSUNIT') then
+                    bFoundEligibleBU := companyMapping.Get(companyMapping."Line Type"::BUSUNIT, dimSetBUSUNIT."Dimension Value Code");
+                if bFoundEligibleBU then
+                    shippingCompany := companyMapping."ShippingCompany Code"
+                else
+                    shippingCompany := 'UMLUG01';
+            end;
         end
         else begin
             companyMapping.Get(companyMapping."Line Type"::OTHER, '');
@@ -78,18 +85,30 @@ codeunit 50000 DimUtilCU_GP
 
         shippingCompany: Code[20];
     begin
-        if defDimnBusinessUnit.Get(tableID, recordNo, 'BUSUNIT') then
-            bFoundEligibleBU := companyMapping.Get(companyMapping."Line Type"::BUSUNIT, defDimnBusinessUnit."Dimension Value Code");
-        if bFoundEligibleBU then
-            shippingCompany := companyMapping."ShippingCompany Code"
-        else if defDimENTITY.Get(tableID, recordNo, 'ENTITY') then begin
-            companyMapping.Get(companyMapping."Line Type"::ENTITY, defDimENTITY."Dimension Value Code");
-            shippingCompany := companyMapping."ShippingCompany Code";
+
+
+
+        if defDimENTITY.Get(tableID, recordNo, 'ENTITY') then begin
+            if defDimENTITY."Dimension Value Code" <> 'UMLUG01' then begin
+                companyMapping.Get(companyMapping."Line Type"::ENTITY, defDimENTITY."Dimension Value Code");
+                shippingCompany := companyMapping."ShippingCompany Code";
+            end
+
+            else begin
+                //UNION GLORY case
+                if defDimnBusinessUnit.Get(tableID, recordNo, 'BUSUNIT') then
+                    bFoundEligibleBU := companyMapping.Get(companyMapping."Line Type"::BUSUNIT, defDimnBusinessUnit."Dimension Value Code");
+                if bFoundEligibleBU then
+                    shippingCompany := companyMapping."ShippingCompany Code"
+                else
+                    shippingCompany := 'UMLUG01';
+            end;
         end
         else begin
             companyMapping.Get(companyMapping."Line Type"::OTHER, '');
             shippingCompany := companyMapping."ShippingCompany Code"; //Unknown company
         end;
+
         dimSHIPPINGCOMPANY.Get('SHIPPINGCOMPANY', shippingCompany);
 
         if defDimSHIPPINGCOMPANY.Get(tableID, recordNo, 'SHIPPINGCOMPANY') then
