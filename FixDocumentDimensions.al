@@ -19,7 +19,7 @@ report 50002 "Fix Document Dimensions"
     UsageCategory = None;
 
     ApplicationArea = All;
-    Caption = 'Fix G/L Dimensions';
+    Caption = 'Fix Document Dimensions';
 
     dataset
     {
