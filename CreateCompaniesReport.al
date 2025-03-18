@@ -1,6 +1,7 @@
 report 50001 CreateCompaniesReport
 {
     ProcessingOnly = true;
+    ApplicationArea = All;
 
     dataset
     {

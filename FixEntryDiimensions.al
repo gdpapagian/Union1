@@ -251,19 +251,7 @@ report 50000 "Fix Entry Dimensions"
             }
         }
 
-        actions
-        {
-            area(processing)
-            {
-                action("Run Report")
-                {
-                    trigger OnAction()
-                    begin
-                        // Add code to run the report
-                    end;
-                }
-            }
-        }
+
     }
 
     trigger OnPreReport()

@@ -54,16 +54,7 @@ report 50005 "Fix Company Pictures"
             }
         }
 
-        actions
-        {
-            area(processing)
-            {
-                action("Run Report")
-                {
 
-                }
-            }
-        }
     }
 
 

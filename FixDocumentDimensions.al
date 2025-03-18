@@ -252,19 +252,7 @@ report 50002 "Fix Document Dimensions"
             }
         }
 
-        actions
-        {
-            area(processing)
-            {
-                action("Run Report")
-                {
-                    trigger OnAction()
-                    begin
-                        // Add code to run the report
-                    end;
-                }
-            }
-        }
+
     }
 
 

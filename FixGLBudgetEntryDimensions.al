@@ -73,19 +73,7 @@ report 50004 "Fix G/L Budget Entry Dim"
             }
         }
 
-        actions
-        {
-            area(processing)
-            {
-                action("Run Report")
-                {
-                    trigger OnAction()
-                    begin
-                        // Add code to run the report
-                    end;
-                }
-            }
-        }
+
     }
 
 

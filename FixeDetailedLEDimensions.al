@@ -73,19 +73,7 @@ report 50006 "Fix Detailed LE Dimensions"
             }
         }
 
-        actions
-        {
-            area(processing)
-            {
-                action("Run Report")
-                {
-                    trigger OnAction()
-                    begin
-                        // Add code to run the report
-                    end;
-                }
-            }
-        }
+
     }
 
     trigger OnPreReport()
