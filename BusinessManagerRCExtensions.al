@@ -16,6 +16,18 @@ pageextension 50001 "Data Upgrade Center _GP" extends "Business Manager Role Cen
                     RunObject = page "Company Mapping Page";
                     ApplicationArea = All;
                 }
+
+                action("Detiailed Vendor Ledger Entries")
+                {
+                    RunObject = page "DVLE Page";
+                    ApplicationArea = All;
+                }
+                action("Detiailed Cust. Ledger Entries")
+                {
+                    RunObject = page "DCLE Page";
+                    ApplicationArea = All;
+                }
+
                 action("Create Companies")
                 {
                     RunObject = report "CreateCompaniesReport";
@@ -52,11 +64,19 @@ pageextension 50001 "Data Upgrade Center _GP" extends "Business Manager Role Cen
                     ApplicationArea = All;
                 }
 
+
+
+                action("Fix Detailed LE Dimensions")
+                {
+                    RunObject = report "Fix Detailed LE Dimensions";
+                    ApplicationArea = All;
+                }
                 action("Fix Company Pictures")
                 {
                     RunObject = report "Fix Company Pictures";
                     ApplicationArea = All;
                 }
+
             }
         }
     }

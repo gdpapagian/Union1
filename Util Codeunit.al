@@ -174,5 +174,33 @@ codeunit 50000 DimUtilCU_GP
         exit(shippingCompany);
     end;
 
+    procedure GetCompanyFromDimValues(dimENTITY: Code[20];
+        dimBUSUNIT: Code[20]): Code[20]
+    var
+        bModifyRecord: Boolean;
+        bFoundEligibleBU: Boolean;
+        companyMapping: Record "CompanyMappingTable";
+        shippingCompany: Code[20];
+    begin
+
+        if dimENTITY <> 'UMLUG01' then begin
+            if companyMapping.Get(companyMapping."Line Type"::ENTITY, dimENTITY) then
+                shippingCompany := companyMapping."ShippingCompany Code";
+        end
+
+        else begin
+            //UNION GLORY case
+
+            bFoundEligibleBU := companyMapping.Get(companyMapping."Line Type"::BUSUNIT, dimBUSUNIT);
+            if bFoundEligibleBU then
+                shippingCompany := companyMapping."ShippingCompany Code"
+            else
+                shippingCompany := '4000';
+        end;
+
+        exit(shippingCompany);
+
+    end;
+
 
 }
