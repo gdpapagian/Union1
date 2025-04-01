@@ -13,18 +13,18 @@ report 50006 "Fix Detailed LE Dimensions"
 
     dataset
     {
-        dataitem("Detailed Vendor Ledg. Entry"; "Detailed Vendor Ledg. Entry")
+        dataitem(DVLETable; "DVLETable")
         {
             trigger OnAfterGetRecord()
             var
                 shippingCompany: Code[20];
-                detailedLE: Record DVLETable;
+                detailedVendLedgEntry: Record "Detailed Vendor Ledg. Entry";
             begin
-                if detailedLE.GET("Entry No.") then
-                    shippingCompany := cuUtil.GetCompanyFromDimValues(detailedLE.EntityValue, detailedLE.BusUnitValue);
-                if "Initial Entry Global Dim. 1" <> shippingCompany then begin
-                    "Initial Entry Global Dim. 1" := shippingCompany;
-                    Modify();
+                detailedVendLedgEntry.GET("Entry No.");
+                shippingCompany := cuUtil.GetCompanyFromDimValues(DVLETable.EntityValue, DVLETable.BusUnitValue);
+                if detailedVendLedgEntry."Initial Entry Global Dim. 1" <> shippingCompany then begin
+                    detailedVendLedgEntry."Initial Entry Global Dim. 1" := shippingCompany;
+                    detailedVendLedgEntry.Modify();
                     nDVLEModified += 1;
                 end;
 
@@ -35,18 +35,18 @@ report 50006 "Fix Detailed LE Dimensions"
 
         }
 
-        dataitem("Detailed Cust. Ledg. Entry"; "Detailed Cust. Ledg. Entry")
+        dataitem(DCLETable; "DCLETable")
         {
             trigger OnAfterGetRecord()
             var
                 shippingCompany: Code[20];
-                detailedLE: Record DCLETable;
+                detailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
             begin
-                detailedLE.GET("Entry No.");
-                shippingCompany := cuUtil.GetCompanyFromDimValues(detailedLE.EntityValue, detailedLE.BusUnitValue);
-                if "Initial Entry Global Dim. 1" <> shippingCompany then begin
-                    "Initial Entry Global Dim. 1" := shippingCompany;
-                    Modify();
+                detailedCustLedgEntry.GET("Entry No.");
+                shippingCompany := cuUtil.GetCompanyFromDimValues(DCLETable.EntityValue, DCLETable.BusUnitValue);
+                if detailedCustLedgEntry."Initial Entry Global Dim. 1" <> shippingCompany then begin
+                    detailedCustLedgEntry."Initial Entry Global Dim. 1" := shippingCompany;
+                    detailedCustLedgEntry.Modify();
                     nDCLEModified += 1;
                 end;
 

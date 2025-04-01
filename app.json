@@ -2,7 +2,7 @@
   "id": "906e5733-2077-4f36-ac32-d27038c3b3db",
   "name": "UnionMerge1",
   "publisher": "Default Publisher",
-  "version": "1.0.0.1",
+  "version": "1.0.0.2",
   "brief": "Upgrades old data for use with Fortune Technologies Maritime solution",
   "description": "Fixes SHIPPINGCOMPANY dimension in posted entries, documents, and default dimensions based on mappings of ENTITY and BUSUNIT dimension values",
   "privacyStatement": "",

@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "UAT_Fortune_Phase2_11_10_2024",
+            "environmentName": "UAT_Fortune_11_10_2024",
             "tenant": "1cc66e95-37e4-4d07-ac81-5d31f8ad941b",
             "startupObjectId": 50000,
             "startupObjectType": "Page",

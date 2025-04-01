@@ -182,7 +182,7 @@ codeunit 50000 DimUtilCU_GP
         companyMapping: Record "CompanyMappingTable";
         shippingCompany: Code[20];
     begin
-
+        shippingCompany := '0';
         if dimENTITY <> 'UMLUG01' then begin
             if companyMapping.Get(companyMapping."Line Type"::ENTITY, dimENTITY) then
                 shippingCompany := companyMapping."ShippingCompany Code";
